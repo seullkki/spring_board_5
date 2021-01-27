@@ -46,7 +46,7 @@
    ]]>
    </insert>
    
-   <update id="replySort">		<!-- 주의 : #{bStep} 이 아니라 기존 bStep을 +1 해야함 / 마이바티스에서는 where를 , 아니고 and로 연결 -->
+   <update id="replySort"> 		<!-- 주의 : #{bStep} 이 아니라 기존 bStep을 +1 해야함 / 마이바티스에서는 where를 , 아니고 and로 연결 -->
    <![CDATA[
       update mvc_board set bStep = bStep + 1 where bGroup = #{bGroup} and bStep > #{bStep}
    ]]>
