@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style>									 
  	table, tr, td{
@@ -23,11 +23,11 @@
 <body>
 	<table>
 		<tr>
-			<td>¹øÈ£</td>
-			<td>ÀÌ¸§</td>
-			<td>Á¦¸ñ</td>
-			<td>³¯Â¥</td>			
-			<td>Á¶È¸</td>
+			<td>ë²ˆí˜¸</td>
+			<td>ì´ë¦„</td>
+			<td>ì œëª©</td>
+			<td>ë‚ ì§œ</td>			
+			<td>ì¡°íšŒ</td>
 		</tr>
 		
 		<c:forEach items="${list}" var="dto">
@@ -44,7 +44,7 @@
 		</c:forEach>
 		
 		<tr>
-			<td colspan="5"><a href="writeView">±Û ÀÛ¼º</a></td>							
+			<td colspan="5"><a href="writeView">ê¸€ ì‘ì„±</a></td>							
 		</tr>
 	</table>
 

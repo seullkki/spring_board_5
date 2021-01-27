@@ -16,4 +16,46 @@
    ]]>
    </insert>
    
+    <select id="read" resultType="edu.bit.board.vo.BoardVO">		<!-- contentview -->
+   <![CDATA[
+      select * from mvc_board where bId = #{bno}
+   ]]>
+   </select>
+   
+   <update id="modifyBoard">		<!--  contentview / 주의 : ()를 set에 넣으면 에러남 -->
+   <![CDATA[
+      update mvc_board set bName = #{bName}, bTitle = #{bTitle}, bContent = #{bContent} where bId = #{bId}
+   ]]>
+   </update>
+   
+   <delete id="deleteBoard">		<!-- 미완성 / contentview  / 주의 : delete * from 하면 안됨. 해당 번호 행을 지우는 것이므로 + ; 붙이면 안됨 -->
+   <![CDATA[						
+      delete from mvc_board where bId = #{bId}
+   ]]>
+   </delete>
+   
+   <select id="replyView" resultType="edu.bit.board.vo.BoardVO">		<!-- contentview -->
+   <![CDATA[
+      select * from mvc_board where bId = #{bId}
+   ]]>
+   </select>
+   
+   <insert id="reply">			<!-- 답변하면 조회수는 새 글에서 다시 0부터 시작하므로, 가져오지 않는다 / 주의 : set은 업데이트문에 쓴다  / 주의 : 스탭, 인덴트 하나씩 올려주기 -->
+   <![CDATA[
+   		insert into mvc_board (bId, bName, bTitle, bContent, bGroup, bStep, bIndent) values (mvc_board_seq.nextval, #{bName}, #{bTitle}, #{bContent}, #{bGroup}, #{bStep}+1, #{bIndent}+1) 
+   ]]>
+   </insert>
+   
+   <update id="replySort">		<!-- 주의 : #{bStep} 이 아니라 기존 bStep을 +1 해야함 / 마이바티스에서는 where를 , 아니고 and로 연결 -->
+   <![CDATA[
+      update mvc_board set bStep = bStep + 1 where bGroup = #{bGroup} and bStep > #{bStep}
+   ]]>
+   </update>
+   
+   <update id="hit">		
+   <![CDATA[
+      update mvc_board set bHit = bHit + 1 where bId = #{bId}
+   ]]>
+   </update>
+   
 </mapper>

@@ -29,4 +29,44 @@ public class BoardServiceImpl implements BoardService{
     public void writeBoard(BoardVO boardVO){
         mapper.insert(boardVO);
     }
+
+	@Override
+	public BoardVO getBoard(int bno) {
+		log.info("getBoard");
+		
+		return mapper.read(bno);
+	}
+
+	@Override
+	public void modify(BoardVO boardVO) {
+		mapper.modifyBoard(boardVO);			// 주의 : 값을 가지고 돌아가는 것이 아니므로 return은 주지 않는다
+	}
+
+	@Override
+	public void delete(int getbId) {
+		mapper.deleteBoard(getbId);
+	}
+
+	@Override
+	public BoardVO getContent(int getbId) {
+		return mapper.replyView(getbId);
+		
+	}
+
+	@Override
+	public void addReply(BoardVO boardVO) {
+		mapper.reply(boardVO);
+	}
+
+	@Override
+	public void replyShape(BoardVO boardVO) {
+		mapper.replySort(boardVO);
+	}
+
+	@Override
+	public void addHit(BoardVO boardVO) {
+		mapper.hit(boardVO);
+	}
+
+
 }

@@ -40,7 +40,7 @@
 		
 			<tr>
 				<td colspan="5">
-					<input type="button" value="글 작성 완료">  <!-- submit ? -->
+					<input type="submit" value="글 작성 완료"> 
 					<a href="list">목록 보기</a>				
 				</td>								
 			</tr>

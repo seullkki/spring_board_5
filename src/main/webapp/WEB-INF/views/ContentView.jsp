@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
 	table, tr, td{
@@ -16,40 +16,40 @@
 </style>
 </head>
 <body>
-	<form action="modify.do" method="post">
-	<input type="hidden" name="bId" value="${content_view.bId}">			<!-- Q. NumberFormatException: For input string: "bId" ¿¡·¯ ¹ß»ı -->	
+	<form action="modify">
+	<input type="hidden" name="bId" value="${content_view.bId}">			
 		<table>
 			<tr>
-				<td>¹øÈ£</td>
+				<td>ë²ˆí˜¸</td>
 				<td>${content_view.bId}</td>
 			</tr>
 			
 			<tr>
-				<td>È÷Æ®</td>
+				<td>íˆíŠ¸</td>
 				<td>${content_view.bHit}</td>
 			</tr>					
 		
 			<tr>
-				<td>ÀÌ¸§</td>
+				<td>ì´ë¦„</td>
 				<td><input type="text" name="bName" value="${content_view.bName}" /></td>
 			</tr>
 			
 			<tr>
-				<td>Á¦¸ñ</td>
+				<td>ì œëª©</td>
 				<td><input type="text" name="bTitle" value="${content_view.bTitle}"/></td>
 			</tr>
 			
 			<tr>
-				<td>³»¿ë</td>
+				<td>ë‚´ìš©</td>
 				<td><textarea name="bContent" rows="50" cols="30">${content_view.bContent}</textarea></td>
 			</tr>
 			
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="¼öÁ¤" />
-					&nbsp;<a href="list.do">¸ñ·Ï º¸±â</a>
-					&nbsp;<a href="delete.do?bId=${content_view.bId}">»èÁ¦</a>
-					&nbsp;<a href="reply_view.do?bId=${content_view.bId}">´äº¯</a>
+					<input type="submit" value="ìˆ˜ì •" />
+					&nbsp;<a href="list">ëª©ë¡ ë³´ê¸°</a>
+					&nbsp;<a href="delete?bId=${content_view.bId}">ì‚­ì œ</a>
+					&nbsp;<a href="ReplyView?bId=${content_view.bId}">ë‹µë³€</a>
 				</td>
 			</tr>		
 		</table>
