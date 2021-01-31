@@ -1,6 +1,8 @@
 package edu.bit.board.mapper;
 
 import java.util.List;
+
+import edu.bit.board.vo.PagingVO;
 import edu.bit.board.vo.BoardVO;
 
 public interface BoardMapper {
@@ -20,9 +22,12 @@ public interface BoardMapper {
 
 	public void replySort(BoardVO boardVO);
 
-	public void hit(BoardVO boardVO);
+	public void hit(int bId);
 
-	// 히트, replyShape 메소드 만들기
+	// 게시물 총 갯수
+	public int countBoard();
 
+	// 페이징 처리 게시글 조회
+	public List<BoardVO> selectBoard(PagingVO vo);
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import edu.bit.board.mapper.BoardMapper;
+import edu.bit.board.vo.PagingVO;
 import edu.bit.board.vo.BoardVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -33,13 +34,13 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardVO getBoard(int bno) {
 		log.info("getBoard");
-		
+		mapper.hit(bno);				// hit								
 		return mapper.read(bno);
 	}
 
 	@Override
 	public void modify(BoardVO boardVO) {
-		mapper.modifyBoard(boardVO);			// 주의 : 값을 가지고 돌아가는 것이 아니므로 return은 주지 않는다
+		mapper.modifyBoard(boardVO);			
 	}
 
 	@Override
@@ -55,18 +56,29 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void addReply(BoardVO boardVO) {
+		mapper.replySort(boardVO);			// replyShape				
 		mapper.reply(boardVO);
 	}
 
+//	@Override
+//	public void replyShape(BoardVO boardVO) {
+//		mapper.replySort(boardVO);
+//	}
+//
+//	@Override
+//	public void addHit(BoardVO boardVO) {
+//		mapper.hit(boardVO);
+//	}
+
+	// 게시물 총 갯수
 	@Override
-	public void replyShape(BoardVO boardVO) {
-		mapper.replySort(boardVO);
+	public int countBoard() {
+		return mapper.countBoard();
 	}
-
+	
+	// 페이징 처리 게시글 조회
 	@Override
-	public void addHit(BoardVO boardVO) {
-		mapper.hit(boardVO);
+	public List<BoardVO> selectBoard(PagingVO vo) {
+		return mapper.selectBoard(vo);
 	}
-
-
 }
